@@ -27,6 +27,9 @@ def get_single_task(pk):
     return out
 
 @app.post("/tasks")
+def create_task():
+    task_data = request.jsontask.create_task(task_data)
+    return "", 204
 
 
 @app.put("/tasks/<int:pk>")
@@ -38,6 +41,9 @@ def update_task(pk):
 
 
 @app.delete("/tasks/<int:pk>")
+def delete_task(pk):
+    task.delete_by_id(pk)
+    return "", 204
 
 # youll also the request context object
 # you can retrieve the income json from the request body by using: request.json
