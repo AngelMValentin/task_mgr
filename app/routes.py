@@ -40,6 +40,7 @@ def update_task(pk):
         return {"error": "Task not found"}, 404  
     
     task_data = request.json  
+    print(task_data)
     task.update_by_id(task_data, pk)  
     return "", 204  
 
