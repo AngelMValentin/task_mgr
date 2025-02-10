@@ -48,7 +48,7 @@ def create_task(task_data):
     conn.commit()
 
 def update_by_id(task_data, task_id):
-    statement = """"
+    statement = """
         UPDATE task
             SET
                 name = ?,

@@ -33,16 +33,16 @@ def create_task():
     return "", 204
 
 
-@app.put("/tasks/<int:pk>")
-def update_task(pk):
+@app.route("/tasks/<int:pk>", methods=["POST", "PUT"])
+def edit_task(pk):
     existing_task = task.select_by_id(pk)
     if not existing_task:
         return {"error": "Task not found"}, 404  
-    
-    task_data = request.json  
-    print(task_data)
+
+    task_data = request.form 
     task.update_by_id(task_data, pk)  
-    return "", 204  
+    return {"message": "Task updated successfully"}, 200
+
 
 
 
