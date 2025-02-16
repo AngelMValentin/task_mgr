@@ -16,7 +16,7 @@ def output_formatter(results):
 
 def scan():
     conn = get_db()
-    cursor = conn.execute("SELECT * FROM task WHERE is_done=0", ())
+    cursor = conn.execute("SELECT * FROM task", ())
     results = cursor.fetchall()
     cursor.close()
     return output_formatter(results)
@@ -44,6 +44,7 @@ def create_task(task_data):
         task_data.get('summary'),
         task_data.get('description')
     )
+    conn = get_db()
     conn.execute(statement, task_tuple)
     conn.commit()
 
